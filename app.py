@@ -10,8 +10,8 @@ st.set_page_config(page_title="Titanic Survival Predictor", layout="wide", initi
 @st.cache_resource
 def load_resources():
     try:
-        model = joblib.load('models/titanic_model.pkl')
-        df = pd.read_csv('data/titanic.csv')
+        model = joblib.load('titanic_model.pkl')
+        df = pd.read_csv('titanic.csv')
         return model, df
     except FileNotFoundError:
         st.error("One or more required files (model.pkl or titanic.csv) are missing. Please ensure your project structure is correct and the model has been trained.")
@@ -30,7 +30,7 @@ if page == "Home":
     
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
-        st.image("images/titanic.jpg", use_container_width=True)
+        st.image("titanic.jpg")
 
 elif page == "Data Exploration":
     st.markdown("<h1 style='text-align: center;'>Data Exploration</h1>", unsafe_allow_html=True)
@@ -130,4 +130,4 @@ elif page == "Model Performance":
 
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
-        st.image("images/confusion_matrix.png", use_container_width=True)
+        st.image("confusion_matrix.png")
